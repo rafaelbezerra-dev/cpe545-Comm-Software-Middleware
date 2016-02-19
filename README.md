@@ -1,2 +1,2 @@
-# cpe545-Comm-Software-Middleware
-CPE 454 - Communication Software &amp; Middeware
+# CPE 545 - Communication Software &amp; Middeware
+
