@@ -6,6 +6,14 @@
 // #include "DoublyLinkedList.h"
 // #include "RTOSTmr_Ticker.h"
 
+void log_m(char msg[]) {
+  printf("%s\n", msg);
+}
+
+void log_v(char name[], long int value) {
+  printf("%s: %li\n", name, value);
+}
+
 /*  TIME TICKER
  ********************************************************/
 pthread_t thr_ticker;
@@ -16,7 +24,7 @@ pthread_mutex_t rtostmr_ticker_mutex;
 static void *run_rtostmr_ticker(void *args){
   while(1)
   {
-    printf("tick \n");
+    // printf("tick \n");
     pthread_mutex_lock(&rtostmr_ticker_mutex);
     pthread_cond_signal(&rtostmr_ticker_cond);
     pthread_mutex_unlock(&rtostmr_ticker_mutex);
@@ -34,6 +42,7 @@ static void *run_tock(void *args){
 }
 
 void __init_time_ticker__(){
+  log_m("Initializing time ticker...");
   pthread_create(&thr_ticker, NULL, run_rtostmr_ticker, NULL);
 }
 
@@ -122,16 +131,27 @@ RTOS_TMR* RTOSTmrCreate (unsigned long int dly,
                         void *callback_arg,
                         unsigned short int *pname,
                         unsigned short int *perr){
+  // struct os_tmr* tmr = (struct os_tmr*)malloc(sizeof(struct os_tmr));
+  log_m("\n\n### RTOSTmrCreate ###");
+  log_v("RTOSTmrCreate::RTOSTmrTickCtr", RTOSTmrTickCtr);
+  log_v("RTOSTmrCreate::dly", dly);
   RTOS_TMR tmr = (RTOS_TMR){
     .RTOSTmrDly = dly,
+    .RTOSTmrMatch = RTOSTmrTickCtr + dly,
     .RTOSTmrPeriod = period,
     .RTOSTmrType = opt,
     .RTOSTmrCallback = callback,
     .RTOSTmrCallbackArg = callback_arg,
     .RTOSTmrName = pname
   };
+  log_v("RTOSTmrCreate::tmr::RTOSTmrMatch", tmr.RTOSTmrMatch);
+
   RTOS_TMR *ptr = &tmr;
 
+  log_v("RTOSTmrCreate::ptr::RTOSTmrDly", ptr->RTOSTmrDly);
+  log_v("RTOSTmrCreate::ptr::RTOSTmrMatch", ptr->RTOSTmrMatch);
+
+  log_m("\n### RTOSTmrCreate (end) ###\n\n");
   return ptr;
 };
 
@@ -153,16 +173,27 @@ unsigned long int RTOSTmrRemainGet(RTOS_TMR *ptmr,
  */
 RTOS_TMR_STATE RTOSTmrStateGet (RTOS_TMR *ptmr,
                           unsigned short int *perr){
-  return rtos_timer_head.state;
+  return RTOSTmrListPtr->state;
 }
 
-bool RTOSTmrStart (RTOS_TMR *ptmr, unsigned short int *perr)
-{
-  if (RTOSTmrListPtr) { // pointer is not null
-
-  }
-  else { // pointer is null
+bool RTOSTmrStart (RTOS_TMR *ptmr, unsigned short int *perr) {
+  if (RTOSTmrListPtr == NULL) { // pointer is null
     RTOSTmrListPtr = ptmr;
+    RTOSTmrListEntries = 1;
+  }
+  else { // pointer is not null
+    RTOS_TMR *temp = RTOSTmrListPtr;
+
+    while (ptmr->RTOSTmrDly > temp->RTOSTmrDly) {
+      ptmr->RTOSTmrDly -= temp->RTOSTmrDly;
+      temp = RTOSTmrListPtr->RTOSTmrNext;
+    }
+
+    RTOSTmrListPtr->RTOSTmrPrev = ptmr;
+    ptmr->RTOSTmrNext = RTOSTmrListPtr;
+    RTOSTmrListPtr = ptmr;
+
+    RTOSTmrListEntries++;
   }
   return true;
 }
@@ -181,11 +212,18 @@ static void *run_timer_manager(void *args){
   {
     pthread_cond_wait(&rtostmr_ticker_cond, &rtostmr_ticker_mutex);
     RTOSTmrTickCtr++;
-    printf("tock %d\n", RTOSTmrTickCtr);
+    log_m("Comparing Tick Counter to List head:");
+    log_v("RTOSTmrTickCtr", RTOSTmrTickCtr);
+    log_v("RTOSTmrListPtr->RTOSTmrMatch", RTOSTmrListPtr->RTOSTmrMatch);
+
+    if (RTOSTmrListPtr->RTOSTmrMatch == RTOSTmrTickCtr){
+      log_m("IT'S A MATCH!!!");
+    }
   }
 }
 
 void __init_timer_manager__() {
+  log_m("Initializing timer...");
   RTOSTmrTickCtr = 0;
   pthread_create(&thr_timer_manager, NULL, run_timer_manager, NULL);
 
@@ -197,17 +235,35 @@ typedef struct foo_struct {
   bool active;
 } FOO;
 
+void MyTmrCallbackFnct1 (void *p_arg) {
+/* Do something when timer #1 expires */
+}
+
 
 int main(){
-  FOO f;
-  f = (FOO) {.active = true, .bar = 0};
-  FOO *ptr;
-  ptr = &f;
+  log_m("Initializing main...");
 
-  printf("%d\n", ptr->bar);
-  printf("%d\n", ptr->active);
   __init_time_ticker__();
   __init_timer_manager__();
+
+  unsigned short int pname = 1;
+  unsigned short int perr = 1;
+  RTOS_TMR *tmr = RTOSTmrCreate(10,
+    0,
+    0,
+    (RTOS_TMR_CALLBACK) MyTmrCallbackFnct1,
+    (void *) 1234567,
+    (unsigned short int*) &pname,
+    (unsigned short int*) &perr);
+
+  log_v("RTOSTmrDly", tmr->RTOSTmrDly);
+  log_v("RTOSTmrMatch", tmr->RTOSTmrMatch);
+
+  RTOSTmrStart(tmr, (unsigned short int*) &perr);
+
+
+  // printf("%li\n", tmr->RTOSTmrDly);
+  // printf("%li\n", tmr->RTOSTmrMatch);
   // pthread_create(&thr_listnr, NULL, run_tock, NULL);
   // pthread_join(thr_listnr, NULL);
 
