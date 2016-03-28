@@ -305,7 +305,8 @@
 
         // RTOS_TMR *head = RTOSTmrListPtr;
 
-        while(RTOSTmrListPtr->RTOSTmrMatch == RTOSTmrTickCtr)
+        while(RTOSTmrListPtr != NULL &&
+          RTOSTmrListPtr->RTOSTmrMatch == RTOSTmrTickCtr)
         {
           // log_msg("IT'S A MATCH!!!");
           RTOSTmrListPtr->RTOSTmrCallback(RTOSTmrListPtr->RTOSTmrCallbackArg);
@@ -313,40 +314,18 @@
           RTOS_TMR *temp = RTOSTmrListPtr;
           unsigned short int perr = 1;
 
-          if (RTOSTmrListPtr->RTOSTmrNext != NULL){
-            RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrNext;
-            switch(temp->RTOSTmrOpt) {
-              case RTOS_TMR_OPT_PERIODIC:
-                RTOSTmrReload(temp, (unsigned short int*) &perr);
-                break;
+          RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrNext;
+          switch(temp->RTOSTmrOpt) {
+            case RTOS_TMR_OPT_PERIODIC:
+              RTOSTmrReload(temp, (unsigned short int*) &perr);
+              break;
 
-              case RTOS_TMR_OPT_ONE_SHOT:
-                temp->RTOSTmrState = RTOS_TMR_STATE_COMPLETED;
-                RTOSTmrDel(temp, (unsigned short int*) &perr);
-                break;
+            case RTOS_TMR_OPT_ONE_SHOT:
+              temp->RTOSTmrState = RTOS_TMR_STATE_COMPLETED;
+              RTOSTmrDel(temp, (unsigned short int*) &perr);
+              break;
 
-              default : continue;
-            }
-          }
-          else{
-            while(RTOSTmrListPtr->RTOSTmrPrev != NULL){
-              RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrPrev;
-            }
-
-            switch(temp->RTOSTmrOpt) {
-              case RTOS_TMR_OPT_PERIODIC:
-                RTOSTmrReload(temp, (unsigned short int*) &perr);
-                break;
-
-              case RTOS_TMR_OPT_ONE_SHOT:
-                temp->RTOSTmrState = RTOS_TMR_STATE_COMPLETED;
-                RTOSTmrDel(temp, (unsigned short int*) &perr);
-                break;
-
-              default : continue;
-            }
-
-            break;
+            default : continue;
           }
         }
 
