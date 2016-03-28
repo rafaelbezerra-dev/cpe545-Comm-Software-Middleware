@@ -12,3 +12,371 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2016-03-07 18:57:34.969 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_72
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-07 18:58:04.267
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Rafael'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2016-03-07 18:59:10.050 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_72
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-07 18:59:20.428
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Rafael'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.132
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.338
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.394
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.451
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.547
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.740
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.810
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.874
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:52.975
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-03-07 19:09:53.046
+!MESSAGE Indexed 'RTOS Timer' (1 sources, 0 headers) in 0.073 sec: 1 declarations; 0 references; 1 unresolved inclusions; 0 syntax errors; 3 unresolved names (75%)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:53.055
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:53.103
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 19:09:53.151
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-03-07 21:21:01.607 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_72
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 21:21:44.733
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 21:21:45.636
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 21:21:45.703
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 21:21:45.748
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-07 21:21:52.116
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Rafael'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 22:25:32.489
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 22:25:32.883
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-03-07 22:25:34.683
+!MESSAGE Indexed 'RTOSDemo' (35 sources, 60 headers) in 1.74 sec: 3,297 declarations; 21,770 references; 45 unresolved inclusions; 25 syntax errors; 1,397 unresolved names (5.3%)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 22:39:34.319
+!MESSAGE Error: Cannot run program "gcc": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "gcc": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 4 0 2016-03-07 22:39:34.409
+!MESSAGE Error: Cannot run program "g++": Launching failed
+!STACK 0
+java.io.IOException: Cannot run program "g++": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at org.eclipse.cdt.core.CommandLauncher.execute(CommandLauncher.java:194)
+	at org.eclipse.cdt.internal.core.BuildRunnerHelper.build(BuildRunnerHelper.java:263)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runProgramForLanguage(AbstractBuiltinSpecsDetector.java:759)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForLanguage(AbstractBuiltinSpecsDetector.java:689)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:562)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

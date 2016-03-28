@@ -1,3 +1,5 @@
+/*	CODED BY: RAFAEL NASCIMENTO BEZERRA	*/
+
   #include <unistd.h> // for sleep() and usleep()
   #include <stdlib.h>
   #include <stdio.h>
