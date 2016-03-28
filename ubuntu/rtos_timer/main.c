@@ -7,6 +7,8 @@
   // #include "DoublyLinkedList.h"
   // #include "RTOSTmr_Ticker.h"
 
+  #define RTOS_CFG_TMR_TASK_RATE_HZ 10
+
   void log_msg(char msg[]) {
     printf("%s\n", msg);
   }
@@ -34,7 +36,7 @@
       pthread_cond_signal(&rtostmr_ticker_cond);
       pthread_mutex_unlock(&rtostmr_ticker_mutex);
 
-      usleep(1000000);
+      usleep(1000000/RTOS_CFG_TMR_TASK_RATE_HZ);
     }
   }
 
@@ -249,34 +251,38 @@
     ptmr->RTOSTmrMatch = RTOSTmrTickCtr + ptmr->RTOSTmrPeriod;
     // log_int("Next run in", RTOSTmrRemainGet(ptmr, NULL));
     RTOS_TMR *temp = ptmr;
-      int pos = 0;
-      while (ptmr->RTOSTmrNext != NULL
-        && ptmr->RTOSTmrMatch >= ((RTOS_TMR *)ptmr->RTOSTmrNext)->RTOSTmrMatch) {
-        ptmr = ptmr->RTOSTmrNext;
-        pos++;
-      }
+    if (ptmr->RTOSTmrNext == NULL) {
+      log_msg("ptmr->RTOSTmrNext == NULL");
+      return false;
+    }
 
-      log_int("Timer will be moved n positions", pos);
+    int pos = 0;
+    while (ptmr->RTOSTmrMatch >= ((RTOS_TMR *)ptmr->RTOSTmrNext)->RTOSTmrMatch) {
+      ptmr = ptmr->RTOSTmrNext;
+      pos++;
+    }
 
-      if(temp == ptmr){
-        log_msg("temp == ptmr");
-        return true;
-      }
+    // log_int("Timer will be moved n positions", pos);
 
-      if(temp->RTOSTmrPrev != NULL){
-        ((RTOS_TMR*)temp->RTOSTmrPrev)->RTOSTmrNext = temp->RTOSTmrNext;
-      }
+    if(temp == ptmr){
+      log_msg("temp == ptmr");
+      return false;
+    }
 
-      if (temp->RTOSTmrNext != NULL) {
-        ((RTOS_TMR*)temp->RTOSTmrNext)->RTOSTmrPrev = temp->RTOSTmrPrev;
-      }
+    if(temp->RTOSTmrPrev != NULL){
+      ((RTOS_TMR*)temp->RTOSTmrPrev)->RTOSTmrNext = temp->RTOSTmrNext;
+    }
 
-      temp->RTOSTmrNext = ptmr->RTOSTmrNext;
-      if (temp->RTOSTmrNext != NULL){
-        ((RTOS_TMR *)temp->RTOSTmrNext)->RTOSTmrPrev = temp;
-      }
-      temp->RTOSTmrPrev = ptmr;
-      ptmr->RTOSTmrNext = temp;
+    if (temp->RTOSTmrNext != NULL) {
+      ((RTOS_TMR*)temp->RTOSTmrNext)->RTOSTmrPrev = temp->RTOSTmrPrev;
+    }
+
+    temp->RTOSTmrNext = ptmr->RTOSTmrNext;
+    if (temp->RTOSTmrNext != NULL){
+      ((RTOS_TMR *)temp->RTOSTmrNext)->RTOSTmrPrev = temp;
+    }
+    temp->RTOSTmrPrev = ptmr;
+    ptmr->RTOSTmrNext = temp;
 
     return true;
   }
@@ -314,13 +320,15 @@
           RTOS_TMR *temp = RTOSTmrListPtr;
           unsigned short int perr = 1;
 
-          RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrNext;
           switch(temp->RTOSTmrOpt) {
             case RTOS_TMR_OPT_PERIODIC:
-              RTOSTmrReload(temp, (unsigned short int*) &perr);
+              if (RTOSTmrReload(temp, (unsigned short int*) &perr)) {
+                RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrNext;
+              }
               break;
 
             case RTOS_TMR_OPT_ONE_SHOT:
+              RTOSTmrListPtr = RTOSTmrListPtr->RTOSTmrNext;
               temp->RTOSTmrState = RTOS_TMR_STATE_COMPLETED;
               RTOSTmrDel(temp, (unsigned short int*) &perr);
               break;
@@ -375,8 +383,8 @@
     unsigned short int name_value = 1;
     unsigned short int* pname = &name_value;
     unsigned short int perr = 1;
-    RTOS_TMR *tmr_1 = RTOSTmrCreate(5,
-      3,
+    RTOS_TMR *tmr_1 = RTOSTmrCreate(RTOS_CFG_TMR_TASK_RATE_HZ * 5,
+      5,
       RTOS_TMR_OPT_PERIODIC,
       (RTOS_TMR_CALLBACK) MyTmrCallbackFnct1,
       (void *) 1234567,
@@ -386,9 +394,9 @@
 
     unsigned short int name_value_2 = 2;
     unsigned short int* pname_2 = &name_value_2;
-    RTOS_TMR *tmr_2 = RTOSTmrCreate(7,
-      0,
-      RTOS_TMR_OPT_ONE_SHOT,
+    RTOS_TMR *tmr_2 = RTOSTmrCreate(RTOS_CFG_TMR_TASK_RATE_HZ * 3,
+      3,
+      RTOS_TMR_OPT_PERIODIC,
       (RTOS_TMR_CALLBACK) MyTmrCallbackFnct2,
       (void *) 1234567,
       pname_2,
@@ -397,9 +405,9 @@
 
     unsigned short int name_value_3 = 3;
     unsigned short int* pname_3 = &name_value_3;
-    RTOS_TMR *tmr_3 = RTOSTmrCreate(8,
-      5,
-      RTOS_TMR_OPT_PERIODIC,
+    RTOS_TMR *tmr_3 = RTOSTmrCreate(RTOS_CFG_TMR_TASK_RATE_HZ * 10,
+      0,
+      RTOS_TMR_OPT_ONE_SHOT,
       (RTOS_TMR_CALLBACK) MyTmrCallbackFnct3,
       (void *) 1334567,
       pname_3,
