@@ -1,0 +1,40 @@
+
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+
+public class RMIServer extends UnicastRemoteObject{
+	
+	protected RMIServer() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public class HelloImpl extends UnicastRemoteObject implements Hello 
+	{ 
+	    public HelloImpl() throws RemoteException {}
+
+	    public String sayHello() { return "Hello world!"; }
+
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try 
+        { 
+            Hello obj = new HelloImpl(); 
+            // Bind this object instance to the name "HelloServer" 
+            Naming.rebind("HelloServer", obj); 
+        } 
+        catch (Exception e) 
+        { 
+            System.out.println("HelloImpl err: " + e.getMessage()); 
+            e.printStackTrace(); 
+        } 
+	}
+
+}
