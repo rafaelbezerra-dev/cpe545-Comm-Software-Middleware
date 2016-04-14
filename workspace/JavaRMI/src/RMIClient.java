@@ -1,3 +1,5 @@
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 
@@ -6,6 +8,7 @@ public class RMIClient {
 		if (arg == null || arg.length < 2){
 			System.out.println("Wrong usage! Missing Arguments" +
 								"java RMIClient [policy] [host:port]");
+			return;
 		}
 //		System.setProperty("java.security.policy","client.policy");
 		System.setProperty("java.security.policy", arg[0]);
