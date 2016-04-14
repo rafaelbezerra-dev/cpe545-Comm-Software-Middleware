@@ -1,41 +1,62 @@
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RMIServer extends UnicastRemoteObject implements Hello {
+public class RMIServer{
 
 	final static String CALL_EXAMPLE = "\nUsage:\n" 
 			+ "    java RMIServer [ip address]\n" 
-			+ "Example:\n"
+			+ "Example	:\n"
 			+ "    java RMIServer 127.0.0.1\n";
+	
+	static ArrayList<String> studentNameList;
+	
+	static class RemoteNameSearch extends UnicastRemoteObject implements INameSearch {
 
-	public RMIServer() throws RemoteException {
-	}
+		protected RemoteNameSearch(String bindName) throws RemoteException, MalformedURLException {
+			super();
+			// Bind this object instance to the name
+			Naming.rebind(bindName, this);
+		}
 
-	public String sayHello() {
-		return "Hello world!";
+		@Override
+		public List<String> search(String prefix) throws RemoteException {
+			prefix = prefix.toLowerCase();
+			List<String> list = new ArrayList<>();
+			for (String name : studentNameList) {
+				if (name.toLowerCase().startsWith(prefix)){
+					list.add(name);
+				}
+			}
+			return list;
+		}
+		
 	}
+	
 
 	public static void main(String args[]) throws UnknownHostException {
+		// windows: run >> start rmiregistry
+		// ubuntu: run >> rmiregistry &
 		if (!validateArgs(args)) {
 			return;
 		}
-
-		// windows: run >> start rmiregistry
-		// ubuntu: run >> rmiregistry &
-		final String bindName = "HelloServer";
-		final String hostname = args[0];// InetAddress.getLocalHost().getHostAddress();
-		System.setProperty("java.rmi.server.hostname", hostname);
-		System.out.println("Hostname set to: " + hostname);
-		System.out.println("Bind name set to: " + bindName);
-
+		
 		try {
-			RMIServer obj = new RMIServer();
-			// Bind this object instance to the name
-			Naming.rebind(bindName, obj);
+			final String bindName = "NameSearchServer";
+			final String hostname = args[0];
+			
+			studentNameList = getList();// InetAddress.getLocalHost().getHostAddress();
+			System.setProperty("java.rmi.server.hostname", hostname);
+			System.out.println("Hostname set to: " + hostname);
+			System.out.println("Bind name set to: " + bindName);
+			
+			RemoteNameSearch nameSearch = new RemoteNameSearch(bindName);
 			System.out.println("Object binded to name: " + bindName);
 			System.out.println("Ready for connections...");
 
@@ -43,6 +64,36 @@ public class RMIServer extends UnicastRemoteObject implements Hello {
 			System.out.println("RMIServer err: " + e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	private static ArrayList<String> getList() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Susan Hart");
+		list.add("Kent Ward");
+		list.add("Delbert Maldonado");
+		list.add("Delia Phillips");
+		list.add("Herbert Blair");
+		list.add("Ada Cunningham");
+		list.add("Alfredo Mccormick");
+		list.add("Wendell Weaver");
+		list.add("Marianne Matthews");
+		list.add("Saul Frazier");
+		list.add("Betty Morgan");
+		list.add("Alexandra Harrington");
+		list.add("Darla Gardner");
+		list.add("Hannah Mathis");
+		list.add("Marian Hansen");
+		list.add("Tracy Barrett");
+		list.add("Sharon Carson");
+		list.add("Karen Douglas");
+		list.add("Shirley Bennett");
+		list.add("Kristopher Brown");
+		list.add("Courtney Allison");
+		list.add("Helen Bradley");
+		list.add("Sonia Hines");
+		list.add("Ann Stephens");
+		list.add("Vera Love");
+		return list;
 	}
 
 	private static boolean validateArgs(String[] args) {

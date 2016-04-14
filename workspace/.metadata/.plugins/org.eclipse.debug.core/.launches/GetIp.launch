@@ -7,5 +7,6 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="GetIp"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="client.policy 155.246.216.117"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="JavaRMI"/>
 </launchConfiguration>

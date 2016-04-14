@@ -1,35 +1,41 @@
+import java.awt.List;
 import java.net.Inet4Address;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
+import java.util.ArrayList;
 
 public class RMIClient {
 
-	final static String CALL_EXAMPLE = "\nUsage:\n"
-			+ "    java RMIClient [policy file] [host:port]\n" 
-			+ "Example:\n"
+	final static String CALL_EXAMPLE = "\nUsage:\n" + "    java RMIClient [policy file] [host:port]\n" + "Example:\n"
 			+ "    java RMIClient ..\\client.policy 127.0.0.1\n";
 
 	public static void main(String args[]) {
-		if (validateArgs(args))
+		if (!validateArgs(args))
 			return;
+		final String securityPolicy = args[0];
+		final String host = args[1];
+		final String prefix = args[2];
 
-		// System.setProperty("java.security.policy","client.policy");
-		System.setProperty("java.security.policy", args[0]);
-
-		String host = args[1];
-
-		String message = "blank";
+		System.out.println("Setting policy");
+		System.setProperty("java.security.policy", securityPolicy);
 
 		// I download server's stubs ==> must set a SecurityManager
 		System.setSecurityManager(new RMISecurityManager());
 
 		try {
-			Hello obj = (Hello) Naming.lookup("//" + host + "/HelloServer"); // objectname
-																				// in
-																				// registry
-			System.out.println(obj.sayHello());
+			INameSearch searcher = (INameSearch) Naming.lookup("//" + host + "/NameSearchServer");
+			ArrayList<String> result = (ArrayList<String>) searcher.search(prefix);
+
+			if (result != null && !result.isEmpty()) {
+				System.out.println("Search Result for prefix " + prefix + ":");
+				for (String name : result) {
+					System.out.println("    " + name);
+				}
+			} else {
+				System.out.println("No name was found that starts with the prefix " + prefix);
+			}
 		} catch (Exception e) {
 			System.out.println("RMIClient exception: " + e.getMessage());
 			e.printStackTrace();
