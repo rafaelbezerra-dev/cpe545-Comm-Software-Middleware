@@ -6,8 +6,6 @@ import java.rmi.RMISecurityManager;
 public class RMIClient {
 	public static void main(String arg[]) {
 		if (arg == null || arg.length < 2){
-			Enumeration<NetworkInterface> n = java.net.NetworkInterface.getNetworkInterfaces();
-			
 			System.out.println("Wrong usage! Missing Arguments" +
 								"java RMIClient [policy] [host:port]");
 			return;
