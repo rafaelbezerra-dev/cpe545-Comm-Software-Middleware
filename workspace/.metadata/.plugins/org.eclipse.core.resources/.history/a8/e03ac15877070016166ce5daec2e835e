@@ -294,7 +294,7 @@ public class Main {
 									word = word.substring(0, slashIndex);
 
 								if (!conn.containsWord(word)) {
-									conn.enqueueWord(word);
+									conn.addWord(word);
 								}
 
 								lastIndex = dt.indexOf(pattern, lastIndex + 1);

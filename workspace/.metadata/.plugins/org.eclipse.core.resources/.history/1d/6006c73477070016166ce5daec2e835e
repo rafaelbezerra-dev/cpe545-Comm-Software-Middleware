@@ -263,11 +263,11 @@ public class Main {
 							String item = conn.getNextWord();
 //							String item = queue.take();
 
-							if (item.isEmpty() || conn.containsWord(item)) {
+							if (item.isEmpty() || conn.getDictionary().containsKey(item)) {
 								continue;
 							}
 
-							conn.addWord(item);
+							conn.getDictionary().put(item, item);
 							String url = "http://www.thesaurus.com/browse/" + URLEncoder.encode(item);
 
 							System.out.println(item);
@@ -294,7 +294,7 @@ public class Main {
 									word = word.substring(0, slashIndex);
 
 								if (!conn.containsWord(word)) {
-									conn.enqueueWord(word);
+									conn.getWorkQueue().put(word);
 								}
 
 								lastIndex = dt.indexOf(pattern, lastIndex + 1);

@@ -51,23 +51,19 @@ public class RMIConnector extends UnicastRemoteObject implements IRMIConnector {
 
 	@Override
 	public void addWord(String word) throws RemoteException {
-		this.dict.put(word, word);
+		this.dict.put(word, word);		
 	}
 
 	@Override
 	public void enqueueWord(String word) throws RemoteException {
-		try {
-			this.queue.put(word);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+this.queue.put(word);
+		
 	}
 
 	@Override
 	public boolean containsWord(String word) throws RemoteException {
-		return this.dict.containsKey(word);
+return this.dict.containsKey(word);		
 	}
 
+	
 }

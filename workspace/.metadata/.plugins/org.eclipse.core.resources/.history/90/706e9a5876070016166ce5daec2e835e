@@ -141,7 +141,7 @@ public class Main {
 						try {
 							String item = queue.take();
 
-							if (item.isEmpty() || dict.containsKey(item)) {
+							if (dict.containsKey(item)) {
 								continue;
 							}
 
@@ -171,7 +171,7 @@ public class Main {
 								if (slashIndex != -1)
 									word = word.substring(0, slashIndex);
 
-								if (!dict.containsKey(word)) {
+								if (!dict.contains(word)) {
 									queue.put(word);
 								}
 
@@ -236,8 +236,8 @@ public class Main {
 
 	public static void startClient(String[] args) {
 		final ArrayList<Thread> workerList = new ArrayList<>();
-//		final BlockingQueue<String> queue;
-//		final ConcurrentHashMap<String, String> dict;
+		final BlockingQueue<String> queue;
+		final ConcurrentHashMap<String, String> dict;
 		final String securityPolicy = args[1];
 		final String host = args[2];
 		final int nworkers = Integer.valueOf(args[3]);
@@ -251,8 +251,8 @@ public class Main {
 		try {
 			IRMIConnector conn = (IRMIConnector) Naming.lookup("//" + host + "/" + BINDING_NAME);
 			System.out.println("Connected");
-			conn.getWorkQueue();
-			conn.getDictionary();
+			queue = conn.getWorkQueue();
+			dict = conn.getDictionary();
 
 			Runnable runn = new Runnable() {
 
@@ -260,14 +260,14 @@ public class Main {
 				public void run() {
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
-							String item = conn.getNextWord();
-//							String item = queue.take();
+//							String item = conn.getNextWord();
+							String item = queue.take();
 
-							if (item.isEmpty() || conn.containsWord(item)) {
+							if (item.isEmpty() || dict.containsKey(item)) {
 								continue;
 							}
 
-							conn.addWord(item);
+							dict.put(item, item);
 							String url = "http://www.thesaurus.com/browse/" + URLEncoder.encode(item);
 
 							System.out.println(item);
@@ -293,8 +293,8 @@ public class Main {
 								if (slashIndex != -1)
 									word = word.substring(0, slashIndex);
 
-								if (!conn.containsWord(word)) {
-									conn.enqueueWord(word);
+								if (!conn.getDictionary().containsKey(word)) {
+									conn.getWorkQueue().put(word);
 								}
 
 								lastIndex = dt.indexOf(pattern, lastIndex + 1);

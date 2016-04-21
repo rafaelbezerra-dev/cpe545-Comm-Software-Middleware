@@ -56,12 +56,7 @@ public class RMIConnector extends UnicastRemoteObject implements IRMIConnector {
 
 	@Override
 	public void enqueueWord(String word) throws RemoteException {
-		try {
-			this.queue.put(word);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.queue.put(word);
 
 	}
 

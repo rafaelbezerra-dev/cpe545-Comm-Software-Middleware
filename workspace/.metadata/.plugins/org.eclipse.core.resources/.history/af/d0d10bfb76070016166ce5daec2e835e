@@ -11,8 +11,6 @@ public interface IRMIConnector extends java.rmi.Remote {
 
 	boolean shouldInterruptWorkers() throws RemoteException;
 	
-	void addWord(String word) throws RemoteException;
-	void enqueueWord(String word) throws RemoteException;
+	void addWord() throws RemoteException;
 	String getNextWord() throws RemoteException;
-	boolean containsWord(String word) throws RemoteException;
 }

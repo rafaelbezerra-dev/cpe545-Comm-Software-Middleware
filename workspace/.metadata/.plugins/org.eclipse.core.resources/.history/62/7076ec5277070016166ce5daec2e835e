@@ -267,7 +267,7 @@ public class Main {
 								continue;
 							}
 
-							conn.addWord(item);
+							conn.getDictionary().put(item, item);
 							String url = "http://www.thesaurus.com/browse/" + URLEncoder.encode(item);
 
 							System.out.println(item);
@@ -294,7 +294,7 @@ public class Main {
 									word = word.substring(0, slashIndex);
 
 								if (!conn.containsWord(word)) {
-									conn.enqueueWord(word);
+									conn.addWord(word);
 								}
 
 								lastIndex = dt.indexOf(pattern, lastIndex + 1);
