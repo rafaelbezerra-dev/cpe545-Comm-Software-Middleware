@@ -132,15 +132,14 @@ public class Main {
 
 			System.out.println("Creating workers...");
 			System.out.println(nworkers + " worker(s) will be created");
-			
+
 			Runnable runn = new Runnable() {
 
 				@Override
 				public void run() {
-					String item = "";
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
-							item = queue.take();
+							String item = queue.take();
 
 							if (item.isEmpty() || dict.containsKey(item)) {
 								continue;
@@ -186,7 +185,7 @@ public class Main {
 							Thread.currentThread().interrupt();
 							break;
 						} catch (IOException e) {
-							System.err.println("Error catch when trying to process word \""+item+"\"");
+							// TODO Auto-generated catch block
 //							e.printStackTrace();
 						}
 					}
@@ -259,10 +258,9 @@ public class Main {
 
 				@Override
 				public void run() {
-					String item = "";
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
-							item = conn.getNextWord();
+							String item = conn.getNextWord();
 //							String item = queue.take();
 
 							if (item.isEmpty() || conn.containsWord(item)) {
@@ -309,8 +307,8 @@ public class Main {
 							Thread.currentThread().interrupt();
 							break;
 						} catch (IOException e) {
-							System.err.println("Error catch when trying to process word \""+item+"\"");
-//							e.printStackTrace();
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 					}
 

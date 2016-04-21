@@ -259,10 +259,9 @@ public class Main {
 
 				@Override
 				public void run() {
-					String item = "";
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
-							item = conn.getNextWord();
+							String item = conn.getNextWord();
 //							String item = queue.take();
 
 							if (item.isEmpty() || conn.containsWord(item)) {
@@ -309,8 +308,8 @@ public class Main {
 							Thread.currentThread().interrupt();
 							break;
 						} catch (IOException e) {
-							System.err.println("Error catch when trying to process word \""+item+"\"");
-//							e.printStackTrace();
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
 					}
 

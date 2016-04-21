@@ -259,10 +259,9 @@ public class Main {
 
 				@Override
 				public void run() {
-					String item = "";
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
-							item = conn.getNextWord();
+							String item = conn.getNextWord();
 //							String item = queue.take();
 
 							if (item.isEmpty() || conn.containsWord(item)) {

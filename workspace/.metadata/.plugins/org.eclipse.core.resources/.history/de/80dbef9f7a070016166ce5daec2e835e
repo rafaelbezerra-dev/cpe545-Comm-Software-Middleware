@@ -259,7 +259,7 @@ public class Main {
 
 				@Override
 				public void run() {
-					String item = "";
+					String item = 
 					while (!Thread.currentThread().isInterrupted()) {
 						try {
 							item = conn.getNextWord();
