@@ -41,6 +41,7 @@ public class RMIServer{
 	
 
 	public static void main(String args[]) throws UnknownHostException {
+		// http://random-name-generator.info/
 		// windows: run >> start rmiregistry
 		// ubuntu: run >> rmiregistry &
 		if (!validateArgs(args)) {

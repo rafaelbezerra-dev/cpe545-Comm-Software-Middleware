@@ -1,0 +1,67 @@
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashSet;
+import java.util.concurrent.BlockingQueue;
+
+public class Consumer<T> extends Thread {
+
+	private final BlockingQueue<T> workQueue;
+
+	public Consumer(BlockingQueue<T> workQueue) {
+		super();
+		this.workQueue = workQueue;
+	}
+
+	@Override
+	public void run() {
+		super.run();
+		while (!Thread.currentThread().isInterrupted()) {
+			try {
+				String item = String.valueOf(workQueue.take());
+				System.out.println(item);
+				String url = "http://www.thesaurus.com/browse/" + URLEncoder.encode(item);
+
+				try {
+					HttpClient.Response response = HttpClient.get(url);
+//					System.out.println("Response has " + response.getResponse().length());
+					String dt= response.getResponse();
+					
+					HashSet<String> words = new HashSet<>();
+					String pattern = "<a href=\"http://www.thesaurus.com/browse/";
+					int lastIndex = dt.indexOf(pattern, 0);
+					while (lastIndex > -1){
+						int endOfWord = dt.indexOf("\"", dt.indexOf("\"", lastIndex )+1);						
+						if (endOfWord == -1) break;
+						
+						String word = dt.substring(lastIndex, endOfWord)
+								.replace("<a href=\"http://www.thesaurus.com/browse/", "");
+						word = URLDecoder.decode(word);
+						int slashIndex = word.indexOf("/");
+						if (slashIndex != -1)
+							word = word.substring(0, slashIndex);
+						
+						if (!word.equals(item) && !words.contains(word)){
+							words.add(word);
+							workQueue.put(word);
+							System.out.println(word);
+						}
+						
+						lastIndex = dt.indexOf(pattern, lastIndex+1);
+						Thread.sleep(500);						
+					}
+					
+					
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// Process item
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+				break;
+			}
+		}
+	}
+
+}

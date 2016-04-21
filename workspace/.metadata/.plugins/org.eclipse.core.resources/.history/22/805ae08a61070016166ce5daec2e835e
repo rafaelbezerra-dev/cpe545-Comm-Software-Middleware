@@ -1,0 +1,47 @@
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class RMIConnector extends UnicastRemoteObject implements IRMIConnector {
+	private final BlockingQueue<String> workQueue;
+	private final ConcurrentHashMap<String, String> dict;
+	private boolean shouldInterruptWorkers;
+
+	public RMIConnector(BlockingQueue<String> workQueue, ConcurrentHashMap<String, String> dict, String bindingName)
+			throws RemoteException, MalformedURLException {
+		super();
+		this.workQueue = workQueue;
+		this.dict = dict;
+		this.shouldInterruptWorkers = false;
+		Naming.rebind(bindingName, this);
+	}
+
+	@Override
+	public BlockingQueue<String> getWorkQueue() throws RemoteException {
+		return this.workQueue;
+	}
+
+	@Override
+	public ConcurrentHashMap<String, String> getDictionary() throws RemoteException {
+		return this.dict;
+	}
+
+	@Override
+	public void interruptWorkers() throws RemoteException {
+		this.shouldInterruptWorkers = true;
+
+	}
+
+	@Override
+	public boolean shouldInterruptWorkers() throws RemoteException {
+		return this.shouldInterruptWorkers;
+	}
+
+	@Override
+	public String getNextWord() throws RemoteException {
+		return null;
+	}
+}

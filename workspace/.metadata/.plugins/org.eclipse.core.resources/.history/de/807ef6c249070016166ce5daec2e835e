@@ -1,0 +1,89 @@
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import RMIServer.RemoteNameSearch;
+
+public class Main {
+
+	static interface IRMIConnector extends java.rmi.Remote {
+		BlockingQueue<String> getWorkQueue() throws RemoteException;
+		ConcurrentHashMap<String, String> getDictionary() throws RemoteException;
+	}
+	
+	static class RMIConnector implements IRMIConnector{
+		final BlockingQueue<String> workQueue;
+		final ConcurrentHashMap<String, String> dict;
+
+		public RMIConnector(BlockingQueue<String> workQueue, ConcurrentHashMap<String, String> dict) {
+			super();
+			this.workQueue = workQueue;
+			this.dict = dict;
+		}
+
+		@Override
+		public BlockingQueue<String> getWorkQueue() throws RemoteException {
+			return this.workQueue;
+		}
+
+		@Override
+		public ConcurrentHashMap<String, String> getDictionary() throws RemoteException {
+			return this.dict;
+		}
+	}
+	
+	
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+//		final BlockingQueue<String> workQueue = new LinkedBlockingQueue<String>();
+//		final ConcurrentHashMap<String, String> dict = new ConcurrentHashMap<>();
+//		workQueue.put("cat");
+//		workQueue.put("dog");
+//		workQueue.put("grape");
+//		Producer producer = new Producer(workQueue);
+//		ArrayList<Consumer> consumers = new ArrayList<>();
+//
+//		// producer.start();
+//		for (int i = 0; i < 5; i++) {
+//			Consumer c = new Consumer(dict, workQueue);
+//			c.start();
+//			consumers.add(c);
+//		}
+//
+//		Thread.sleep(10000000);
+//
+//		System.out.println("Interrupting...");
+//		producer.interrupt();
+//		for (Consumer consumer : consumers) {
+//			consumer.interrupt();
+//		}
+
+	}
+	
+	public static void startServer() {
+		try {
+			final BlockingQueue<String> workQueue = new LinkedBlockingQueue<String>();
+			final ConcurrentHashMap<String, String> dict = new ConcurrentHashMap<>();
+			final String bindName = "NameSearchServer";
+			final String hostname = args[0];
+			
+			studentNameList = getList();// InetAddress.getLocalHost().getHostAddress();
+			System.setProperty("java.rmi.server.hostname", hostname);
+			System.out.println("Hostname set to: " + hostname);
+			System.out.println("Bind name set to: " + bindName);
+			
+			RemoteNameSearch nameSearch = new RemoteNameSearch(bindName);
+			System.out.println("Object binded to name: " + bindName);
+			System.out.println("Ready for connections...");
+
+		} catch (Exception e) {
+			System.out.println("RMIServer err: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,28 @@
+import java.util.concurrent.BlockingQueue;
+
+public class Producer<T> extends Thread{
+
+	private final BlockingQueue<T> workQueue;
+
+	public Producer(BlockingQueue<T> workQueue) {
+		super();
+		this.workQueue = workQueue;
+	}
+
+	@Override
+	public void run() {
+		super.run();
+		while (!Thread.currentThread().isInterrupted()) {
+            try {
+                T item = workQueue.take();
+                System.out.println(item.toString());
+                // Process item
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+	}
+
+	
+}

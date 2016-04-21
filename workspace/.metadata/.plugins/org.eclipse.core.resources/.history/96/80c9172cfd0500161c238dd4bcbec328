@@ -1,0 +1,53 @@
+import java.util.concurrent.BlockingQueue;
+
+public class Consumer<T> extends Thread {
+
+	private final BlockingQueue<T> workQueue;
+
+	public Consumer(BlockingQueue<T> workQueue) {
+		super();
+		this.workQueue = workQueue;
+	}
+
+	@Override
+	public void run() {
+		super.run();
+		while (!Thread.currentThread().isInterrupted()) {
+			try {
+				Thread.sleep(500);
+				String item = String.valueOf(workQueue.take());
+				System.out.println(item);
+				String url = "http://www.thesaurus.com/browse/" + item;
+
+				try {
+					HttpClient.Response response = HttpClient.get(url);
+//					System.out.println("Response has " + response.getResponse().length());
+					String dt= response.getResponse();
+					
+					
+					String pattern = "<a href=\"http://www.thesaurus.com/browse/";
+					int lastIndex = dt.indexOf(pattern, 0);
+					while (lastIndex > -1){
+						int endOfWord = dt.indexOf("\"", dt.indexOf("\"", lastIndex )+1);
+						
+						if (endOfWord == -1) break;
+						
+						String word = dt.substring(lastIndex, endOfWord)
+								.replace("<a href=\"http://www.thesaurus.com/browse/", "");
+						System.out.println(word);
+						lastIndex = dt.indexOf(pattern, lastIndex )
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// Process item
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+				break;
+			}
+		}
+	}
+
+}

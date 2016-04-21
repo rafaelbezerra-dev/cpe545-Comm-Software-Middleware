@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class Main {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		final BlockingQueue<String> workQueue = new LinkedBlockingQueue<String>();
+		Producer producer = new Producer(workQueue);
+		producer.start();
+		ArrayList<Consumer<String>> consumers = new ArrayList<>();
+		for (int i = 0; i < 2; i++) {
+			Consumer<String> c = new Consumer<>(workQueue);
+			c.start();
+			consumers.add(c);
+		}
+
+		Thread.sleep(10000);
+		
+		System.out.println("Interrupting...");
+		producer.interrupt();
+		for (Consumer<String> consumer : consumers) {
+			consumer.interrupt();
+		}
+
+	}
+
+}
