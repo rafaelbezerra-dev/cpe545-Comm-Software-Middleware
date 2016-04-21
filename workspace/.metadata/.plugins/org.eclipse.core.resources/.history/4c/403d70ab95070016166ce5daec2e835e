@@ -219,7 +219,6 @@ public class Main {
 
 					interruptWorkers(workerList);
 					
-					System.out.print("Writing words to file...");
 					StringBuilder lines = new StringBuilder();
 					Enumeration<String> words = dict.keys();
 					while (words.hasMoreElements()) {
@@ -233,7 +232,6 @@ public class Main {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					System.out.println(" Done.");
 				}
 			});
 
