@@ -25,7 +25,7 @@ public class Main {
 			+ "    java Main [type] [policy file] [host:port]\n" + "Example:\n"
 			+ "    java Main -client ..\\client.policy 127.0.0.1\n";
 	final static String BINDING_NAME = "MY___SERVER";
-	final static int SEARCH_DEPTH = 5; 
+	final static int SEARCH_DEPTH = 5 
 
 	public static void main(String[] args) throws InterruptedException, UnknownHostException {
 		// TODO Auto-generated method stub
@@ -301,7 +301,7 @@ public class Main {
 
 							String pattern = "<a href=\"http://www.thesaurus.com/browse/";
 							int lastIndex = dt.indexOf(pattern, 0);
-							int count = SEARCH_DEPTH;
+							int count = 10;
 							while (lastIndex > -1 && count > 0) {
 								int endOfWord = dt.indexOf("\"", dt.indexOf("\"", lastIndex) + 1);
 								if (endOfWord == -1)
