@@ -1,18 +1,13 @@
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.Inet4Address;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -117,7 +112,7 @@ public class Main {
 
 	public static void startServer(String[] args) throws UnknownHostException {
 		final ArrayList<Thread> workerList = new ArrayList<>();
-		final BlockingQueue<String> queue = new LinkedBlockingQueue<String>();
+		final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(500);
 		final ConcurrentHashMap<String, String> dict = new ConcurrentHashMap<>();
 		final String bindName = BINDING_NAME;
 		final String hostname = args[1];
@@ -218,19 +213,7 @@ public class Main {
 
 					interruptWorkers(workerList);
 					
-					StringBuilder lines = new StringBuilder();
-					Enumeration<String> words = dict.keys();
-					while (words.hasMoreElements()) {
-						lines.append(words.nextElement())
-						.append("\n");
-					}
-					Path path = Paths.get("res/output.js");
-					try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-					    writer.write(lines.toString());
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
 				}
 			});
 
@@ -300,7 +283,7 @@ public class Main {
 
 							String pattern = "<a href=\"http://www.thesaurus.com/browse/";
 							int lastIndex = dt.indexOf(pattern, 0);
-							int count = 10;
+							int count = 3;
 							while (lastIndex > -1 && count > 0) {
 								int endOfWord = dt.indexOf("\"", dt.indexOf("\"", lastIndex) + 1);
 								if (endOfWord == -1)

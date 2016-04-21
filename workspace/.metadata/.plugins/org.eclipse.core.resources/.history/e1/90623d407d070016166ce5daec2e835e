@@ -117,7 +117,7 @@ public class Main {
 
 	public static void startServer(String[] args) throws UnknownHostException {
 		final ArrayList<Thread> workerList = new ArrayList<>();
-		final BlockingQueue<String> queue = new LinkedBlockingQueue<String>();
+		final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(500);
 		final ConcurrentHashMap<String, String> dict = new ConcurrentHashMap<>();
 		final String bindName = BINDING_NAME;
 		final String hostname = args[1];
