@@ -281,7 +281,7 @@ public class Main {
 
 							String pattern = "<a href=\"http://www.thesaurus.com/browse/";
 							int lastIndex = dt.indexOf(pattern, 0);
-							int count = 3;
+							int count = 2;
 							while (lastIndex > -1 && count > 0) {
 								int endOfWord = dt.indexOf("\"", dt.indexOf("\"", lastIndex) + 1);
 								if (endOfWord == -1)
