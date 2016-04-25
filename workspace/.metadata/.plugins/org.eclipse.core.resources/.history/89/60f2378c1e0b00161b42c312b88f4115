@@ -36,6 +36,7 @@ public class Main {
 	final static int SEARCH_DEPTH = 5;
 
 	public static void main(String[] args) throws InterruptedException, UnknownHostException {
+		System.out.println(CALL_EXAMPLE);
 		if (!validateArgs(args)) {
 			return;
 		}
@@ -91,16 +92,17 @@ public class Main {
 				} else {
 					try {
 						Inet4Address.getByName(host);
-						try{
-							Integer.valueOf(nthr);
-							return true;
-						}
-						catch (Exception e){
-							System.out.println("Invalid argument. You must provide a valid number of threads.");
-						}
+						return true;
 					} catch (UnknownHostException e) {
 						// e.printStackTrace();
 						System.out.println("Invalid argument. You must provide a valid IP Address.");
+					}
+
+					try{
+						Integer.valueOf(nthr);
+					}
+					catch (Exception e){
+						System.out.println("Invalid argument. You must provide a valid number of threads.");
 					}
 				}
 			} else {
@@ -109,7 +111,6 @@ public class Main {
 			System.out.println(CALL_EXAMPLE);
 			return false;
 		} else {
-			System.out.println(CALL_EXAMPLE);
 			return false;
 		}
 	}
@@ -205,6 +206,16 @@ public class Main {
 
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				public void run() {
+					// System.out.print("Asking clients to stop...");
+					// try {
+					// conn.interruptWorkers();
+					// } catch (RemoteException e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// System.out.print(" Failed.");
+					// }
+					// System.out.println(" Done.");
+
 					interruptWorkers(workerList);
 
 					System.out.print("Writing words to file...");

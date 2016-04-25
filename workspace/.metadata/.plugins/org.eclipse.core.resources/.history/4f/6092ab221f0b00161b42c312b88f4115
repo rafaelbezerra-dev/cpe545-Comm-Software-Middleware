@@ -205,6 +205,16 @@ public class Main {
 
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				public void run() {
+					// System.out.print("Asking clients to stop...");
+					// try {
+					// conn.interruptWorkers();
+					// } catch (RemoteException e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// System.out.print(" Failed.");
+					// }
+					// System.out.println(" Done.");
+
 					interruptWorkers(workerList);
 
 					System.out.print("Writing words to file...");

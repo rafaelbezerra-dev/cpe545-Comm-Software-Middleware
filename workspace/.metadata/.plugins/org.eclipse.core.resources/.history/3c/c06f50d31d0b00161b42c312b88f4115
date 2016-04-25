@@ -16,7 +16,6 @@ import java.util.Enumeration;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
@@ -25,9 +24,9 @@ public class Main {
 					"\nServer Usage:\n"
 					+ "    java Main [type] [ip address] [number of threads] [start word]\n"
 					+ "Example	:\n"
-					+ "    java Main -server 127.0.0.1 0 cat\n"
+					+ "    java Main -server 127.0.0.1 \n"
 					+ "    ... or ...\n"
-					+ "    java Main -server 155.246.135.89 1 dog\n"
+					+ "    java Main -server 127.0.0.1 \n"
 					+ "\nClient Usage:\n"
 					+ "    java Main [type] [policy file] [host] [number of threads]\n"
 					+ "Example:\n"
@@ -36,6 +35,32 @@ public class Main {
 	final static int SEARCH_DEPTH = 5;
 
 	public static void main(String[] args) throws InterruptedException, UnknownHostException {
+		// TODO Auto-generated method stub
+		// final BlockingQueue<String> workQueue = new
+		// LinkedBlockingQueue<String>();
+		// final ConcurrentHashMap<String, String> dict = new
+		// ConcurrentHashMap<>();
+		// workQueue.put("cat");
+		// workQueue.put("dog");
+		// workQueue.put("grape");
+		// Producer producer = new Producer(workQueue);
+		// ArrayList<Consumer> consumers = new ArrayList<>();
+		//
+		// // producer.start();
+		// for (int i = 0; i < 5; i++) {
+		// Consumer c = new Consumer(dict, workQueue);
+		// c.start();
+		// consumers.add(c);
+		// }
+		//
+		// Thread.sleep(10000000);
+		//
+		// System.out.println("Interrupting...");
+		// producer.interrupt();
+		// for (Consumer consumer : consumers) {
+		// consumer.interrupt();
+		// }
+
 		if (!validateArgs(args)) {
 			return;
 		}
@@ -57,10 +82,9 @@ public class Main {
 
 		String type = args[0];
 		if (type.equals("-server")) {
-			int expectedNumberOfArgs = 4;
+			int expectedNumberOfArgs = 2;
 			if (args != null && args.length >= expectedNumberOfArgs) {
 				String host = args[1];
-				String nthr = args[2];
 				try {
 					Inet4Address.getByName(host);
 					return true;
@@ -68,36 +92,22 @@ public class Main {
 					// e.printStackTrace();
 					System.out.println("Invalid argument. You must provide a valid IP Address.");
 				}
-				try{
-					Integer.valueOf(nthr);
-				}
-				catch (Exception e){
-					System.out.println("Invalid argument. You must provide a valid number of threads.");
-				}
-				
 			} else {
 				System.out.println("Incorrect call. " + "Expected " + expectedNumberOfArgs + " arguments.");
 			}
 			System.out.println(CALL_EXAMPLE);
 			return false;
 		} else if (type.equals("-client")) {
-			int expectedNumberOfArgs = 4;
+			int expectedNumberOfArgs = 3;
 			if (args != null && args.length >= expectedNumberOfArgs) {
 				String policy = args[1];
 				String host = args[2];
-				String nthr = args[3];
 				if (!new java.io.File(policy).exists()) {
 					System.out.println("Invalid argument. File " + policy + " could not be found.");
 				} else {
 					try {
 						Inet4Address.getByName(host);
-						try{
-							Integer.valueOf(nthr);
-							return true;
-						}
-						catch (Exception e){
-							System.out.println("Invalid argument. You must provide a valid number of threads.");
-						}
+						return true;
 					} catch (UnknownHostException e) {
 						// e.printStackTrace();
 						System.out.println("Invalid argument. You must provide a valid IP Address.");
@@ -109,7 +119,6 @@ public class Main {
 			System.out.println(CALL_EXAMPLE);
 			return false;
 		} else {
-			System.out.println(CALL_EXAMPLE);
 			return false;
 		}
 	}
@@ -205,6 +214,16 @@ public class Main {
 
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				public void run() {
+					// System.out.print("Asking clients to stop...");
+					// try {
+					// conn.interruptWorkers();
+					// } catch (RemoteException e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// System.out.print(" Failed.");
+					// }
+					// System.out.println(" Done.");
+
 					interruptWorkers(workerList);
 
 					System.out.print("Writing words to file...");
