@@ -44,7 +44,7 @@ public class RMIServer{
 		// http://random-name-generator.info/
 		// windows: run >> start rmiregistry
 		// ubuntu: run >> rmiregistry &
-//		System.out.println(CALL_EXAMPLE);
+		System.out.println(CALL_EXAMPLE);
 		if (!validateArgs(args)) {
 			return;
 		}
@@ -95,23 +95,6 @@ public class RMIServer{
 		list.add("Sonia Hines");
 		list.add("Ann Stephens");
 		list.add("Vera Love");
-		list.add("Gary Mclaughlin");
-		list.add("Alberto Abbott");
-		list.add("Jeffrey Hodges");
-		list.add("Clayton Porter");
-		list.add("Mildred Bass");
-		list.add("Ruby Phelps");
-		list.add("Santos Scott");
-		list.add("Enrique Franklin");
-		list.add("Madeline Arnold");
-		list.add("Martha Young");
-		list.add("Anita Stanley");
-		list.add("Louise Collins");
-		list.add("Antonio Richards");
-		list.add("Sonja Harmon");
-		list.add("Alfred Lewis");
-		list.add("Doyle Frazier");
-		list.add("Anthony Wells");
 		return list;
 	}
 

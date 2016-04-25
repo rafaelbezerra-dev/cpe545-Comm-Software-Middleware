@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.rmi.server.UnicastRemoteObject"/>
 <fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 <fullyQualifiedTypeName name="java.rmi.Naming"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.nio.file.Files"/>
 <fullyQualifiedTypeName name="java.nio.file.Path"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ExecutionException"/>
 </qualifiedTypeNameHistroy>

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class RMIClient {
 
-	final static String CALL_EXAMPLE = "\nUsage:\n" + "    java RMIClient [policy file] [host:port] [prefix]\n" + "Example:\n"
-			+ "    java RMIClient ..\\client.policy 127.0.0.1 \n";
+	final static String CALL_EXAMPLE = "\nUsage:\n" + "    java RMIClient [policy file] [host:port]\n" + "Example:\n"
+			+ "    java RMIClient ..\\client.policy 127.0.0.1\n";
 
 	public static void main(String args[]) {
-//		System.out.println(CALL_EXAMPLE);
+		System.out.println(CALL_EXAMPLE);
 		if (!validateArgs(args))
 			return;
 		final String securityPolicy = args[0];
